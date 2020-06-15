@@ -1,0 +1,21 @@
+version: '1.0.{build}'
+image: Visual Studio 2019
+branches:
+  only:
+  - master
+
+init:
+- git config --global core.autocrlf true
+
+before_build:
+- dotnet --info
+- dotnet restore
+
+build:
+  project: MqLearn.sln
+  verbosity: minimal
+
+build_script:
+- dotnet build
+
+deploy: off
